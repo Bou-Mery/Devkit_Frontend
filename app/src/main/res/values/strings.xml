@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">DevKit</string>
+
+    <string-array name="fdomains">
+        <item>Web</item>
+        <item>Mobile</item>
+        <item>Data Science</item>
+        <item>Machine Learning</item>
+    </string-array>
+
+
+</resources>

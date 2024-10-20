@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#509A94"
+    android:foregroundTint="#303736"
+    app:circularflow_radiusInDP="20dp"
+    tools:context=".EditFrameworkActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="412dp"
+        android:layout_height="80dp"
+        android:background="#181E1D"
+        android:minHeight="?attr/actionBarSize"
+        android:paddingStart="40dp"
+        android:paddingTop="10dp"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:subtitleTextColor="#6AECCE"
+        app:title="DevKit"
+        app:titleTextColor="#6AECCE" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/allerta_stencil"
+        android:text="Edit Framework"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.397"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        app:layout_constraintVertical_bias="0.053" />
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="368dp"
+        android:layout_height="527dp"
+        android:background="#566765"
+        android:backgroundTint="#3A4A49"
+        app:cardCornerRadius="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.488"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintVertical_bias="0.331">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="356dp"
+            android:layout_height="597dp"
+            android:hapticFeedbackEnabled="false">
+
+
+            <EditText
+                android:id="@+id/name2"
+                android:layout_width="300dp"
+                android:layout_height="40dp"
+                android:background="@drawable/edittext_border"
+                android:ems="10"
+                android:fontFamily="@font/actor"
+                android:gravity="center"
+                android:hint="Name of Framework"
+                android:inputType="text"
+                android:maxHeight="100dp"
+                android:shadowColor="#00FFE7"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#009688"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.446"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.174" />
+
+            <EditText
+                android:id="@+id/id2"
+                android:layout_width="300dp"
+                android:layout_height="40dp"
+                android:background="@drawable/edittext_border"
+                android:ems="10"
+                android:fontFamily="@font/actor"
+                android:gravity="center"
+                android:hint="Id of Framework"
+                android:inputType="text"
+                android:maxHeight="100dp"
+                android:shadowColor="#00FFE7"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#009688"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.433"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.056" />
+
+            <EditText
+                android:id="@+id/descreption2"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/edittext_border"
+                android:fontFamily="@font/actor"
+                android:gravity="center"
+                android:hint="Description"
+                android:inputType="textMultiLine"
+                android:minLines="4"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#009688"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.456" />
+
+            <EditText
+                android:id="@+id/depend2"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/edittext_border"
+                android:ems="10"
+                android:fontFamily="@font/actor"
+                android:gravity="center"
+                android:hint="Dependencies of Framework"
+                android:inputType="textMultiLine"
+                android:minLines="3"
+                android:outlineSpotShadowColor="@color/white"
+                android:shadowColor="#00FFE7"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#009688"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.635" />
+
+            <Spinner
+                android:id="@+id/domain2"
+                android:layout_width="300dp"
+                android:layout_height="35dp"
+                android:background="@drawable/edittext_border"
+
+                android:entries="@array/fdomains"
+                android:gravity="center"
+                android:scrollbarSize="14sp"
+                app:layout_constraintBottom_toTopOf="@+id/descreption2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.517"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/id2"
+                app:layout_constraintVertical_bias="0.817" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/actor"
+                android:text="Domain"
+                android:textColor="#6AECCE"
+                app:layout_constraintBottom_toTopOf="@+id/domain2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.133"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/id2"
+                app:layout_constraintVertical_bias="1.0" />
+
+            <Button
+                android:id="@+id/fadd2"
+                android:layout_width="127dp"
+                android:layout_height="53dp"
+                android:backgroundTint="#6AECCE"
+                android:gravity="center"
+                android:text="Edit"
+                android:textColor="#1D302E"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.864"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.851" />
+
+            <Button
+                android:id="@+id/fcancel2"
+                android:layout_width="127dp"
+                android:layout_height="53dp"
+                android:backgroundTint="#1D302E"
+                android:gravity="center"
+                android:text="Cancel"
+                android:textColor="#6AECCE"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.126"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.852" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
