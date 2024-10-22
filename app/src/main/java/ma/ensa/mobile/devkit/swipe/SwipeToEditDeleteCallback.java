@@ -5,6 +5,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.RectF;
+import android.util.Log;
 import android.view.View;
 
 import androidx.annotation.NonNull;
@@ -14,7 +15,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Context;
 import android.widget.Toast;
 
+import java.util.List;
+
 import ma.ensa.mobile.devkit.EditFrameworkActivity;
+import ma.ensa.mobile.devkit.MainActivity;
+import ma.ensa.mobile.devkit.adapter.FrameworkAdapter;
 import ma.ensa.mobile.devkit.beans.Framework;
 import ma.ensa.mobile.devkit.services.FrameworkService;
 
@@ -24,6 +29,8 @@ public class SwipeToEditDeleteCallback extends ItemTouchHelper.SimpleCallback {
     private final OnSwipeActionListener listener;
     private final Context context ;
     private FrameworkService fs ;
+    MainActivity main ;
+    private FrameworkAdapter adapter ;
 
     public interface OnSwipeActionListener {
         void onEdit(int position);
@@ -46,16 +53,13 @@ public class SwipeToEditDeleteCallback extends ItemTouchHelper.SimpleCallback {
     @Override
     public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
         int position = viewHolder.getAdapterPosition();
-        Framework selectedFramework = fs.getFrameworkAtPosition(position);
+        Log.d("position", "onSwiped: "+position);
         if (direction == ItemTouchHelper.LEFT) {
             showDeleteConfirmationDialog(position);
         } else if (direction == ItemTouchHelper.RIGHT) {
-            Intent intent = new Intent(context , EditFrameworkActivity.class);
-            intent.putExtra("framework", selectedFramework);
-            context.startActivity(intent);
+
             listener.onEdit(position);
             resetItem(position);
-
         }
     }
 
@@ -99,12 +103,16 @@ public class SwipeToEditDeleteCallback extends ItemTouchHelper.SimpleCallback {
                 .setMessage("Are you sure you want to delete this item?")
                 .setPositiveButton("Yes", (dialog, which) -> {
                     listener.onDelete(position);
-
-                    fs.deleteFramework(position, new FrameworkService.DeleteFrameworkCallback() {
+                    Log.d("alert", "showDeleteConfirmationDialog: "+position);
+                    fs.deleteFramework(position+1, new FrameworkService.DeleteFrameworkCallback() {
                         @Override
                         public void onSuccess(String message) {
+
                             Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
+                            main.getRc().setAdapter(adapter);
+                            adapter.notifyDataSetChanged();
                         }
+
 
                         @Override
                         public void onError(String error) {

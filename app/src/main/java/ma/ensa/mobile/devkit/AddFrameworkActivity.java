@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Base64;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,6 +16,10 @@ import android.widget.Toast;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.io.ByteArrayOutputStream;
+import java.util.List;
+
+import ma.ensa.mobile.devkit.adapter.FrameworkAdapter;
 import ma.ensa.mobile.devkit.beans.Framework;
 import ma.ensa.mobile.devkit.services.FrameworkService;
 
@@ -27,6 +32,15 @@ public class AddFrameworkActivity extends AppCompatActivity {
     private ImageView frameworkImage;
     private Bitmap selectedImage;
     private FrameworkService fs;
+    private FrameworkAdapter adapter ;
+    MainActivity main ;
+private String encodeImageToBase64(Bitmap bitmap) {
+    ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+    bitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
+    byte[] byteArray = byteArrayOutputStream.toByteArray();
+    // Prepend the MIME type for a valid base64 format
+    return "data:image/jpeg;base64," + Base64.encodeToString(byteArray, Base64.DEFAULT);
+}
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,30 +54,37 @@ public class AddFrameworkActivity extends AppCompatActivity {
         domain = findViewById(R.id.domain);
         fadd = findViewById(R.id.fadd);
         fcancel = findViewById(R.id.fcancel);
-        frameworkImage = findViewById(R.id.frameworkImage); // Initialize the ImageView
-        selectImageButton = findViewById(R.id.selectImageButton); // Initialize button for selecting image
+        frameworkImage = findViewById(R.id.frameworkImage);
+        selectImageButton = findViewById(R.id.selectImageButton);
 
         selectImageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                openGallery(); // Method to open image gallery
+                openGallery();
             }
         });
 
         fadd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String imageBase64 = selectedImage != null ? encodeImageToBase64(selectedImage) : null;
+
                 Framework framework = new Framework(0,
                         name.getText().toString(),
                         description.getText().toString(),
                         domain.getSelectedItem().toString(),
                         depend.getText().toString(),
-                        selectedImage != null ? "Image added" : "No image"); // Replace with actual image path if needed
+                        imageBase64);
+
                 fs = FrameworkService.getInstance(getApplicationContext());
                 fs.addFramework(framework, new FrameworkService.AddFrameworkCallback() {
                     @Override
                     public void onSuccess(String message) {
                         Toast.makeText(AddFrameworkActivity.this, message, Toast.LENGTH_LONG).show();
+                        main.getRc().setAdapter(adapter);
+                        adapter.notifyDataSetChanged();
+                        finish();
+
                     }
 
                     @Override
@@ -100,4 +121,9 @@ public class AddFrameworkActivity extends AppCompatActivity {
             }
         }
     }
+
+
+
+
+
 }

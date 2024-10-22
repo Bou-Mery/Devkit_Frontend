@@ -64,8 +64,9 @@ public class FrameworkService implements IDao<Framework> {
         void onError(String error);
     }
 
+
     @Override
-    public boolean addFramework(Framework obj , AddFrameworkCallback callback) {
+    public boolean addFramework(Framework obj, AddFrameworkCallback callback) {
         String url = urlString + "createFramework.php";
 
         StringRequest request = new StringRequest(Request.Method.POST, url,
@@ -74,7 +75,6 @@ public class FrameworkService implements IDao<Framework> {
                     public void onResponse(String response) {
                         Log.d("ResponseAdd", "onResponse: " + response);
                         try {
-                            // Assurez-vous que le backend renvoie une réponse attendue ici
                             callback.onSuccess("Framework Added Successfully!!");
                         } catch (JsonSyntaxException e) {
                             callback.onError("Error parsing response: " + e.getMessage());
@@ -97,7 +97,12 @@ public class FrameworkService implements IDao<Framework> {
                 params.put("description", obj.getDescreption());
                 params.put("domain", obj.getDomain());
                 params.put("dependencies", obj.getDependencies());
-                params.put("image_path", encodeImageToBase64(obj.getImage_path())); // Encodez l'image en base64 ici
+
+                // Encodez l'image sélectionnée en base64 et l'ajoutez aux paramètres
+                if (obj.getImage_path() != null) {
+                    params.put("image_path", obj.getImage_path());
+                }
+
                 return params;
             }
         };
@@ -106,7 +111,7 @@ public class FrameworkService implements IDao<Framework> {
         return true;
     }
 
-    // Ajoutez cette méthode pour encoder l'image en base64
+
     private String encodeImageToBase64(String imagePath) {
         File imgFile = new File(imagePath);
         if (imgFile.exists()) {
