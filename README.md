@@ -85,7 +85,8 @@ Le projet est structuré autour de deux parties :
 
 Voici une courte démonstration de l'application :
 
-https://github.com/Bou-Mery/Devkit_Frontend/issues/3#issue-2605053571
+https://github.com/user-attachments/assets/825bec8a-5162-4157-8715-a2d289f5aef8
+
 
 
 ## Auteurs
