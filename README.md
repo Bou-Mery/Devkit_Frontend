@@ -19,6 +19,8 @@ Le projet est structuré autour de deux parties :
    ![Capture d'écran 2024-10-22 113339](https://github.com/user-attachments/assets/6237bd84-bbad-40af-9e5a-5480647d3e9c)
    
 3. **Backend (PHP)** : API RESTful développée en PHP, utilisant une base de données MySQL pour stocker et gérer les données.
+   ![Capture d'écran 2024-10-22 113939](https://github.com/user-attachments/assets/2a1a06e3-e20d-409b-a951-e1fbf33f57fd)
+
 
 ---
 
