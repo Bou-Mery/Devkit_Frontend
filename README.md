@@ -16,7 +16,9 @@ DevKit est une application Android qui utilise la bibliothèque Volley pour gér
 Le projet est structuré autour de deux parties :
 
 1. **Frontend (Android)** : Développement en Java avec la bibliothèque Volley pour gérer les requêtes réseau.
-2. **Backend (PHP)** : API RESTful développée en PHP, utilisant une base de données MySQL pour stocker et gérer les données.
+   ![Capture d'écran 2024-10-22 113339](https://github.com/user-attachments/assets/6237bd84-bbad-40af-9e5a-5480647d3e9c)
+   
+3. **Backend (PHP)** : API RESTful développée en PHP, utilisant une base de données MySQL pour stocker et gérer les données.
 
 ---
 
