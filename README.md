@@ -3,7 +3,7 @@
 
 DevKit est une application Android qui utilise la bibliothèque Volley pour gérer les appels réseau et la communication avec un backend développé en PHP. Ce projet a pour but de fournir un kit de développement simple pour les interactions client-serveur, avec une interface utilisateur Android connectée à un backend capable de gérer les opérations courantes telles que la récupération et la mise à jour des données.
 
-###Dépôts GitHub
+### Dépôts GitHub
 - Frontend (Android) :[ DevKit Android Repository](https://github.com/Bou-Mery/Devkit_Frontend)
 - Backend (PHP) : [DevKit Backend Repository](https://github.com/Bou-Mery/DevKit_backend)
 ## Fonctionnalités
